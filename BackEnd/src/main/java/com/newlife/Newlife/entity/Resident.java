@@ -1,13 +1,78 @@
 package com.newlife.Newlife.entity;
 
-public class Resident extends Person{
+import com.newlife.Newlife.DTO.ResidentDTO;
+import lombok.*;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.*;
+
+
+
+@Entity
+@Table(name = "TblResident")
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Resident{
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idResident")
+    private long id;
+
+    @Column(name = "idLocation")
+    private String apartment;
+    @Column(name = "dsName")
+    private String name;
+    @Column(name = "dsEmail")
+    private String email;
+    @Column(name = "dsCPF")
+    private String cpf;
+    @Column(name = "dsTelephoneA")
+    private String telephoneA;
+    @Column(name = "dsTelephoneB")
+    private String telephoneB;
+    @Column(name = "dsRG")
+    private String RG;
+
+    @Column(name = "dsPicture")
+    String picture;
+    @Column(name = "dsObs")
+    String obs;
+    @Column(name = "dsEmergencyContact")
     public String emergencyContact;
+    @Column(name = "dsEmergencyTelephone")
     public String emergencyTelephone;
 
-    public Resident(String apartment, String name, String email, String telephoneA, String telephoneB, String RG, String cpf, String picture, String obs) {
-        super(apartment, name, email, telephoneA, telephoneB, RG, cpf, picture, obs);
-        this.emergencyContact = this.emergencyContact;
-        this.emergencyTelephone = this.emergencyTelephone;
+    public Resident(ResidentDTO dto) {
+        this.apartment = dto.getApartment();
+        this.name = dto.getName();
+        this.email = dto.getEmail();
+        this.telephoneA = dto.getTelephoneA();
+        this.telephoneB = dto.getTelephoneB();
+        this.RG = dto.getRG();
+        this.cpf = dto.getCpf();
+        this.obs = dto.getObs();
+        this.emergencyContact = dto.getEmergencyContact();
+        this.emergencyTelephone = dto.getEmergencyTelephone();
     }
+
+    public void updateRegistry(@NotNull ResidentDTO dto){
+    //    this.apartment = dto.getApartment();
+        this.name = dto.getName();
+        this.email = dto.getEmail();
+        this.telephoneA = dto.getTelephoneA();
+        this.telephoneB = dto.getTelephoneB();
+        this.RG = dto.getRG();
+        this.cpf = dto.getCpf();
+        this.obs = dto.getObs();
+        this.emergencyContact = dto.getEmergencyContact();
+        this.emergencyTelephone = dto.getEmergencyTelephone();
+    }
+
+
 }

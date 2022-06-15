@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Vehicles {
 
     @Id
@@ -36,13 +35,19 @@ public class Vehicles {
     public String color;
 
     public Vehicles(VehiclesDTO dto){
+        this.id = dto.getId();
+        this.apartment = dto.getApartment();
         this.plate = dto.getPlate();
         this.brand = dto.getBrand();
         this.model = dto.getModel();
         this.color = dto.getColor();
     }
 
+
     public void updateRegistry(VehiclesDTO dto){
-        
+       this.brand = dto.getBrand();
+       this.model = dto.getModel();
+       this.color = dto.getColor();
+       this.apartment = dto.getApartment();
     }
 }

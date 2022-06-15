@@ -4,7 +4,7 @@ spring:
   main:
     allow-circular-references: true
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/newLifeBD?useTimezone=true&serverTimezone=UTC
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/newLifeBD
     username: root
     password: root1234
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -17,7 +17,7 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 server:
-  port: 8080
+  port: 8888
   error:
     include-message: always
     include-binding-errors: on-param
