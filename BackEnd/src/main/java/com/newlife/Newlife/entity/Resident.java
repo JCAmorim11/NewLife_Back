@@ -3,7 +3,6 @@ package com.newlife.Newlife.entity;
 import com.newlife.Newlife.DTO.ResidentDTO;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.*;
 
@@ -48,6 +47,8 @@ public class Resident{
     @Column(name = "dsEmergencyTelephone")
     public String emergencyTelephone;
 
+
+
     public Resident(ResidentDTO dto) {
         this.apartment = dto.getApartment();
         this.name = dto.getName();
@@ -59,6 +60,7 @@ public class Resident{
         this.obs = dto.getObs();
         this.emergencyContact = dto.getEmergencyContact();
         this.emergencyTelephone = dto.getEmergencyTelephone();
+        this.picture = "s";
     }
 
     public void updateRegistry(@NotNull ResidentDTO dto){
@@ -72,6 +74,7 @@ public class Resident{
         this.obs = dto.getObs();
         this.emergencyContact = dto.getEmergencyContact();
         this.emergencyTelephone = dto.getEmergencyTelephone();
+        this.picture = "s";
     }
 
 

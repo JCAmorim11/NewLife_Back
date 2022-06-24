@@ -35,7 +35,7 @@ public class Vehicles {
     public String color;
 
     public Vehicles(VehiclesDTO dto){
-        this.id = dto.getId();
+        this.id = 0;
         this.apartment = dto.getApartment();
         this.plate = dto.getPlate();
         this.brand = dto.getBrand();

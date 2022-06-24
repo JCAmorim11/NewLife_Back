@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class VehiclesDTO {
 
-    private Long id;
+    private int id;
     private String apartment;
     private String plate;
     private String brand;
@@ -19,7 +19,7 @@ public class VehiclesDTO {
     private String color;
 
     public VehiclesDTO(Vehicles vehicle){
-        this.id = vehicle.getId();
+        this.id = 0;
         this.apartment = vehicle.getApartment();
         this.plate = vehicle.getPlate();
         this.brand = vehicle.getBrand();
