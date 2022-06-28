@@ -17,6 +17,7 @@ public abstract class Worker_ {
 	public static volatile SingularAttribute<Worker, Long> id;
 	public static volatile SingularAttribute<Worker, String> apartment;
 	public static volatile SingularAttribute<Worker, String> email;
+	public static volatile SingularAttribute<Worker, String> picture;
 
 	public static final String OBS = "obs";
 	public static final String R_G = "RG";
@@ -27,6 +28,7 @@ public abstract class Worker_ {
 	public static final String ID = "id";
 	public static final String APARTMENT = "apartment";
 	public static final String EMAIL = "email";
+	public static final String PICTURE = "picture";
 
 }
 

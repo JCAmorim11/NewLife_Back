@@ -38,13 +38,16 @@ public class Visitor {
     @Column(name = "dsObs")
     String obs;
 
+
     public Visitor(VisitorDTO dto) {
+        this.id = dto.getId();
         this.apartment = dto.getApartment();
         this.name = dto.getName();
         this.email = dto.getTelephoneA();
         this.telephoneA = dto.getTelephoneA();
         this.telephoneB = dto.getTelephoneB();
         this.RG = dto.getRG();
+        this.picture = "s";
         this.cpf = dto.getCpf();
         this.obs = dto.getObs();
     }

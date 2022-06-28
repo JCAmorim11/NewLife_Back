@@ -35,7 +35,12 @@ public class Worker {
     @Column(name = "dsObs")
     private String obs;
 
+    @Column(name = "dsPicture")
+    String picture;
+
+
    public Worker(WorkerDTO dto) {
+       this.id = dto.getId();
         this.apartment = dto.getApartment();
         this.name = dto.getName();
         this.email = dto.getEmail();
@@ -43,6 +48,7 @@ public class Worker {
         this.telephoneB = dto.getTelephoneB();
         this.RG = dto.getRG();
         this.cpf = dto.getCpf();
+        this.picture = "s";
         this.obs = dto.getObs();
     }
 

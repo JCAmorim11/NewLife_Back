@@ -26,21 +26,21 @@ public class VisitorController {
 
     @PostMapping()
     @Transactional
-    public ResponseEntity<?> createWorker(@RequestBody String cpf, @RequestBody VisitorDTO dto){
-        this.visitorService.updateVisitor(cpf,dto);
+    public ResponseEntity<?> createVisitor(@RequestBody VisitorDTO dto){
+        this.visitorService.updateVisitor(dto.getApartment(),dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/{apartment}")
+    @PutMapping("/update")
     @Transactional
-    public ResponseEntity<?> updateWorker(@PathVariable String apartment, @RequestBody VisitorDTO dto){
-        this.visitorService.updateVisitor(apartment,dto);
+    public ResponseEntity<?> updateVisitor(@RequestBody VisitorDTO dto){
+        this.visitorService.updateVisitor(dto.getApartment(), dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/{apartment}")
-    public ResponseEntity<?> deleteWorker(@PathVariable String cpf){
-        this.visitorService.deleteVisitor(cpf);
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteVisitor(@RequestBody VisitorDTO dto){
+        this.visitorService.deleteVisitor(dto.getApartment());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

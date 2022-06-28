@@ -24,7 +24,7 @@ public class ResidentService {
     private final ResidentRepository repository;
 
 
-    public List<ResidentDTO> findByApartment(){
+    public List<ResidentDTO> findByApartment(String apartment){
         List<Resident> resident = this.residentRepository.findAll();
 
         if(resident.size() == 0) throw new ResponseStatusException(NOT_FOUND, "Não foram achados moradores neste endereço");
@@ -55,15 +55,32 @@ public class ResidentService {
         this.residentRepository.save(neoResident);
     }
 
-    public void updateResident(String apartment, ResidentDTO dto){
-        Resident resident = this.residentRepository.findByApartment(apartment).orElseThrow(() -> new ResponseStatusException(NOT_FOUND));
-        resident.updateRegistry(dto);
-        residentRepository.save(resident);
+    public void updateResident(ResidentDTO dto){
+        List<Resident> resident = this.residentRepository.findAllByApartment(dto.getApartment());
+        if(resident.size() == 0) throw new ResponseStatusException(NOT_FOUND, "Não foram achados moradores neste endereço");
+        String resCpf = resident.get(0).getCpf();
+        if(resident.size() < 2){
+            resident.get(0).updateRegistry(dto);
+            residentRepository.save(resident.get(0));
+            return;
+        }else{
+            String dtoCpf = dto.getCpf();
+            for(int i=1; i < resident.size(); i++){
+                if(Objects.equals(resCpf, dtoCpf)){
+                    resident.get(i).updateRegistry(dto);
+                    residentRepository.save(resident.get(i));
+                    return;
+                }else {
+                    resCpf = resident.get(i).getCpf();
+                }
+            }
+        }
+        throw new ResponseStatusException(NOT_FOUND, "Não foi achado morador com este cpf");
     }
 
-    public void deleteResident(String apartment){
-        Resident resident = this.residentRepository.findByApartment(apartment).orElseThrow(() -> new ResponseStatusException(NOT_FOUND));
-        residentRepository.delete(resident);
+    public void deleteResident(long id){
+        Resident resident = this.residentRepository.findById(id).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "NÃO ENCONTRADO ID"));;
+        this.residentRepository.delete(resident);
     }
 
     public Page<Resident> findAll(Pageable pageable, String query) {

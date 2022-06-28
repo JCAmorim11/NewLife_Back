@@ -49,16 +49,16 @@ public class ResidentController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/{apartment}")
+    @PutMapping("/update")
     @Transactional
-    public ResponseEntity<?> updateResident(@PathVariable String apartment, @RequestBody ResidentDTO dto){
-        this.residentService.updateResident(apartment,dto);
+    public ResponseEntity<?> updateResident(@RequestBody ResidentDTO dto){
+        this.residentService.updateResident(dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/{apartment}")
-    public ResponseEntity<?> deleteResident(@PathVariable String cpf){
-        this.residentService.deleteResident(cpf);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteResident(@PathVariable("id") long id){
+        this.residentService.deleteResident(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

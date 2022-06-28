@@ -45,6 +45,7 @@ public class Vehicles {
 
 
     public void updateRegistry(VehiclesDTO dto){
+       this.plate = dto.getPlate();
        this.brand = dto.getBrand();
        this.model = dto.getModel();
        this.color = dto.getColor();

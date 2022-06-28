@@ -2,10 +2,12 @@ package com.newlife.Newlife.DTO;
 
 import com.newlife.Newlife.entity.Worker;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class WorkerDTO {
 
     private String apartment;
@@ -17,8 +19,10 @@ public class WorkerDTO {
     private String cpf;
 
     private String obs;
+    private int id;
 
     public WorkerDTO(Worker worker){
+        this.id =0;
         this.apartment = worker.getApartment();
         this.name = worker.getName();
         this.email = worker.getEmail();

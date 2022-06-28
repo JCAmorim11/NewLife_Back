@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class ResidentDTO {
-    private int id =0;
+    private long id;
     private String apartment;
     private String name;
     private String email;
@@ -25,7 +25,7 @@ public class ResidentDTO {
     private String emergencyTelephone;
 
     public ResidentDTO(Resident resident){
-        this.id = 0;
+        this.id = resident.getId();
         this.apartment = resident.getApartment();
         this.name = resident.getName();
         this.email = resident.getEmail();

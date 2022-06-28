@@ -50,6 +50,7 @@ public class Resident{
 
 
     public Resident(ResidentDTO dto) {
+        this.id = dto.getId();
         this.apartment = dto.getApartment();
         this.name = dto.getName();
         this.email = dto.getEmail();
@@ -64,7 +65,6 @@ public class Resident{
     }
 
     public void updateRegistry(@NotNull ResidentDTO dto){
-    //    this.apartment = dto.getApartment();
         this.name = dto.getName();
         this.email = dto.getEmail();
         this.telephoneA = dto.getTelephoneA();
@@ -74,7 +74,6 @@ public class Resident{
         this.obs = dto.getObs();
         this.emergencyContact = dto.getEmergencyContact();
         this.emergencyTelephone = dto.getEmergencyTelephone();
-        this.picture = "s";
     }
 
 

@@ -19,5 +19,11 @@ public interface ResidentRepository extends JpaRepository<Resident,Long>, JpaSpe
     @Query("SELECT m FROM Resident m WHERE m.apartment = :apartment")
     List<Resident> findAllByApartment(@Param("apartment") String apartment);
 
+    @Query("SELECT a FROM Resident a WHERE a.cpf = :cpf")
+    Optional<Resident> findByCpf(@Param("cpf") String cpf);
+
+    @Query("SELECT a FROM Resident a WHERE a.id = :id")
+    Optional<Resident> findById(@Param("id") long id);
+
 
 }

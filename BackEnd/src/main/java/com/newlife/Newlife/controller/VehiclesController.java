@@ -1,10 +1,8 @@
 package com.newlife.Newlife.controller;
 
 import com.newlife.Newlife.DTO.VehiclesDTO;
-import com.newlife.Newlife.entity.Vehicles;
 import com.newlife.Newlife.service.VehiclesService;
-import lombok.*;
-import org.springframework.http.HttpEntity;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +20,7 @@ public class VehiclesController {
     @GetMapping("/{plate}")
     public ResponseEntity<?> getUserById(@PathVariable String plate){
        VehiclesDTO dto = this.vehiclesService.findByPlate(plate);
-        return ResponseEntity.status(HttpStatus.OK).body(dto);
+       return ResponseEntity.status(HttpStatus.OK).body(dto);
     }
     @PostMapping()
     @Transactional
@@ -30,15 +28,15 @@ public class VehiclesController {
         this.vehiclesService.createVehicle(dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @PutMapping("/{plate}")
+    @PutMapping("/update")
     @Transactional
-    public ResponseEntity<?> updateVehicle(@PathVariable String plate, @RequestBody VehiclesDTO dto){
-        this.vehiclesService.updateVehicle(plate, dto);
+    public ResponseEntity<?> updateVehicle(@RequestBody VehiclesDTO dto){
+        this.vehiclesService.updateVehicle(dto.getPlate(), dto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-    @DeleteMapping("/{plate}")
-    public ResponseEntity<?> deleteVehicle(@PathVariable String plate){
-        this.vehiclesService.deleteVehicle(plate);
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteVehicle(@RequestBody VehiclesDTO dto){
+        this.vehiclesService.deleteVehicle(dto.getPlate());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
