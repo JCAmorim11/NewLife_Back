@@ -1,18 +1,27 @@
 package com.newlife.Newlife.service;
 
 import com.newlife.Newlife.DTO.ResidentDTO;
+import com.newlife.Newlife.DTO.ResidentSheet;
 import com.newlife.Newlife.entity.Resident;
 import com.newlife.Newlife.repository.ResidentRepository;
 import com.newlife.Newlife.repository.specfications.ResidentSpecifications;
 import lombok.AllArgsConstructor;
+import org.apache.commons.collections.IteratorUtils;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
@@ -22,7 +31,7 @@ public class ResidentService {
 
     private final ResidentRepository residentRepository;
     private final ResidentRepository repository;
-
+    private final FileService fileService;
 
     public List<ResidentDTO> findByApartment(String apartment){
         List<Resident> resident = this.residentRepository.findAll();
@@ -82,6 +91,49 @@ public class ResidentService {
         Resident resident = this.residentRepository.findById(id).orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "NÃO ENCONTRADO ID"));;
         this.residentRepository.delete(resident);
     }
+
+
+    public void importExcel(MultipartFile file) throws IOException, NoSuchAlgorithmException {
+        
+  //      Path filePath = this.fileService.save(file,"data");
+       // FileInputStream inputFile = new FileInputStream(file.);
+        InputStream inputStream =  new BufferedInputStream(file.getInputStream());
+
+        XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+        XSSFSheet sheet = workbook.getSheetAt(0);
+
+        List<Row> rows = this.toList(sheet.iterator());
+        rows.remove(0);
+        System.out.println(rows);
+        Map<Resident, List<ResidentSheet>> detailToEnd = rows
+                .stream()
+                .map(ResidentSheet::from)
+                .collect(Collectors.groupingBy(ResidentSheet::toResident));
+   /*     List<Resident> resident = new ArrayList<>();
+        int i=0;
+        for (List<ResidentSheet> residentSheets : detailToEnd.values()) {
+
+            resident.add(residentSheets.indexOf(i));
+            for(ResidentSheet model : residentSheets) {
+                System.out.println(model.apt.toUpperCase());
+            }
+            i++;
+        }*/
+
+       // this.residentRepository.saveAll();
+        System.out.println();
+        return;
+    }
+
+    public <T> List toList(Iterator<T> iterator){
+        return IteratorUtils.toList(iterator);
+    }
+
+
+
+
+
+
 
     public Page<Resident> findAll(Pageable pageable, String query) {
         return this.repository.findAll(ResidentSpecifications.likeGenericQuery(query), pageable);

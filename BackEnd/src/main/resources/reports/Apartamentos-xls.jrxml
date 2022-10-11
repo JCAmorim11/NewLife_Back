@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.15.0.final using JasperReports Library version 6.15.0-dd49bfb94918336b8321d5507193f0169ead4e95  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Apartamentos-xls" pageWidth="900" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="progress by use"/>
+	<property name="net.sf.jasperrepots.awt.ignore.missing.font" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.wrap.text" value="true"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="670"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="316"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<subDataset name="data" uuid="e1134eed-1fa6-4e26-b4b2-14358121a7c1">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+		<queryString language="json">
+			<![CDATA[report.data]]>
+		</queryString>
+	</subDataset>
+	<parameter name="subReportApartmentData" class="net.sf.jasperreports.engine.JasperReport">
+		<defaultValueExpression><![CDATA[$P{subReportApartmentData}]]></defaultValueExpression>
+	</parameter>
+	<queryString language="JSON">
+		<![CDATA[report.data]]>
+	</queryString>
+	<title>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="24" y="12" width="176" height="30" uuid="5bc994ea-8757-4aaf-82b9-61cfae32a0b6"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de Moradores]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="51">
+			<staticText>
+				<reportElement x="20" y="31" width="40" height="20" uuid="bc19a17a-adc8-44d5-8a3c-11c2876f129c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="43c0c6b9-286b-457e-b78a-ad3708e1f02d"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="30" width="180" height="20" uuid="ec914226-39c7-427b-bb48-a877064a0804">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9cafcc5d-5156-4546-a679-39177069ab78"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="31" width="180" height="20" uuid="0ee69a6e-cfc5-49a5-9627-9eb9691fedc9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af70112f-d9fd-4f72-8420-73895b626ca8"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="31" width="110" height="20" uuid="024b1a86-6b9b-492b-9958-4f7d5b7e4ba7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0020bb26-2b42-475c-932f-1ea6d3eea2db"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="570" y="30" width="100" height="20" uuid="fe38c12b-b286-4477-9d41-a39d90100b2f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bbf01b54-a509-4d96-a2ab-28a3a923c892"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[RG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="670" y="30" width="100" height="20" uuid="2503082a-580a-4ec5-a719-696d357f5484">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="20ad9dac-36a1-4dc4-8139-be824afcbebf"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="770" y="30" width="90" height="20" uuid="65b4945e-437d-4398-952f-c862ce6d6fe7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4123d4e7-fa24-4a5a-9989-937c3f712ebe"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefone 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="30" width="40" height="20" uuid="defe89dc-4d2b-43e3-98e1-625c96113a54">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="43ee4ae2-1463-44d3-9bb5-3d00adc59e9e"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APT]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<subreport>
+				<reportElement x="20" y="0" width="840" height="20" uuid="28b2e2f1-e9e5-4cce-85c0-e6fd31d2d0af">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("residentData")]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{subReportApartmentData}]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+</jasperReport>

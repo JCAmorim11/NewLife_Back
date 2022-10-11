@@ -22,17 +22,30 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	implementation 'org.jetbrains:annotations:23.0.0'
+	implementation 'commons-io:commons-io:2.10.0'
+	implementation('com.lowagie:itext:2.1.7')
+	implementation('io.jsonwebtoken:jjwt:0.9.1')
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation('net.sf.jasperreports:jasperreports:6.16.0')
+	implementation('net.sf.jasperreports:jasperreports-fonts:6.16.0')
+	implementation('org.apache.poi:poi:5.2.2')
+	implementation 'org.apache.poi:poi-ooxml:5.2.2'
+	implementation('org.springdoc:springdoc-openapi-ui:1.6.9')
+	implementation('org.springdoc:springdoc-openapi-data-rest:1.6.5')
+	implementation(group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1')
+	implementation group: 'com.google.zxing', name: 'core', version: '3.4.1'
+	implementation group: 'org.json', name: 'json', version: '20210307'
+	implementation group: 'com.google.zxing', name: 'javase', version: '3.4.1'
+	implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
 	annotationProcessor 'org.hibernate:hibernate-jpamodelgen'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
